@@ -26,9 +26,23 @@
     <section class="banner-area container">
         <div class="banner-slider">
             
-            <img src="banner1.jpg" alt="Banner Destaque" class="banner-slide active">
+            <img src="banner1.jpg" alt="Destaque 1" class="banner-slide active">
+            
+            <img src="banner2.jpg" alt="Destaque 2" class="banner-slide">
 
-            </div>
+            <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next-btn" onclick="changeSlide(1)">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div class="slider-dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                </div>
+            
+        </div>
     </section>
 
     <section class="categories container">
@@ -61,6 +75,7 @@
 
     <footer>
         <div class="container footer-content">
+            
             <div class="footer-col">
                 <img src="logo.png" alt="Alpha Logo" class="footer-logo">
                 <p>Transformando ideias em presentes únicos. Personalização com qualidade e carinho.</p>
@@ -83,6 +98,7 @@
                     <i class="fa-regular fa-credit-card"></i>
                 </div>
             </div>
+
         </div>
 
         <div class="footer-bottom">
