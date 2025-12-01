@@ -30,6 +30,8 @@
             
             <img src="banner2.jpg" alt="Destaque 2" class="banner-slide">
 
+            <img src="banner3.jpg" alt="Destaque 3" class="banner-slide">
+
             <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
@@ -40,37 +42,16 @@
             <div class="slider-dots">
                 <span class="dot active" onclick="goToSlide(0)"></span>
                 <span class="dot" onclick="goToSlide(1)"></span>
-                </div>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
             
         </div>
     </section>
 
-    <section class="categories container">
-        <button class="cat-btn active" data-id="todos">Todos</button>
-        <button class="cat-btn" data-id="canecas">Canecas</button>
-        <button class="cat-btn" data-id="placas">Placas Decorativas</button>
-        <button class="cat-btn" data-id="papelaria">Papelaria</button>
-    </section>
-
-    <section class="tags-container container">
-        <span class="tag-label"><i class="fa-solid fa-filter"></i> Filtrar:</span>
-        <div class="tags-scroll">
-            <button class="tag-btn active-tag" onclick="filterByTag('')">Tudo</button>
-            <button class="tag-btn" onclick="filterByTag('maes')">Dia das Mães</button>
-            <button class="tag-btn" onclick="filterByTag('carros')">Carros</button>
-            <button class="tag-btn" onclick="filterByTag('geek')">Geek/Animes</button>
-            <button class="tag-btn" onclick="filterByTag('times')">Times</button>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2 class="section-title">🔥 Destaques</h2>
-        <div id="carousel-container" class="carousel"></div>
-    </section>
-
     <main class="container">
         <h2 class="section-title">Catálogo Completo</h2>
-        <div id="products-grid" class="grid"></div>
+        <div id="products-grid" class="grid">
+            </div>
     </main>
 
     <footer>
