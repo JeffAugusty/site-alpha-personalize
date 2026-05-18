@@ -11,7 +11,7 @@
     --bg-color: #121212;       /* Fundo escuro */
     --card-bg: #1e1e1e;        /* Fundo dos cartões */
     --primary: #25D366;        /* Verde WhatsApp */
-    --accent: #0070c9;         /* Azul da Marca */
+    --accent: #ff4757;         /* TEMA NAMORADOS: Vermelho Romântico */
     --text-main: #ffffff;      /* Texto principal */
     --text-sec: #b0b0b0;       /* Texto secundário */
     --font: 'Poppins', sans-serif;
@@ -41,6 +41,52 @@ body.no-scroll {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 15px;
+}
+
+/* =========================================
+   1.5 EFEITO DIA DOS NAMORADOS (CORAÇÕES)
+   ========================================= */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Impede que o clique seja bloqueado pelos corações */
+    z-index: -1; /* Deixa eles lá no fundo, atrás dos produtos */
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -10%; /* Começa abaixo da tela */
+    font-size: 20px;
+    opacity: 0;
+    animation: floatUp linear infinite;
+    
+    /* O SEGREDO DO DESTAQUE: Efeito Glow Neon Intenso */
+    color: #ff4757; /* Cor base vermelha viva */
+    text-shadow: 0 0 10px #ff4757, 
+                 0 0 20px #ff4757, 
+                 0 0 30px #ffb3ba; /* Brilho rosa claro no centro */
+}
+
+/* Configurando tempos, posições e tamanhos MAIORES para cada coração */
+.heart:nth-child(1) { left: 10%; animation-duration: 8s; font-size: 25px; }
+.heart:nth-child(2) { left: 25%; animation-duration: 12s; animation-delay: 2s; font-size: 40px; } /* Grande */
+.heart:nth-child(3) { left: 40%; animation-duration: 10s; animation-delay: 4s; font-size: 28px; }
+.heart:nth-child(4) { left: 60%; animation-duration: 15s; animation-delay: 1s; font-size: 50px; } /* Muito Grande */
+.heart:nth-child(5) { left: 75%; animation-duration: 9s; animation-delay: 3s; font-size: 22px; }
+.heart:nth-child(6) { left: 90%; animation-duration: 11s; animation-delay: 5s; font-size: 35px; }
+.heart:nth-child(7) { left: 50%; animation-duration: 13s; animation-delay: 7s; font-size: 30px; }
+.heart:nth-child(8) { left: 15%; animation-duration: 10s; animation-delay: 6s; font-size: 20px; }
+
+/* A Animação com Alta Opacidade */
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; } /* Aparece rápido e com 80% de opacidade (quase total) */
+    90% { opacity: 0.8; } /* Mantém bem visível durante a subida */
+    100% { transform: translateY(-120vh) scale(1.2) rotate(20deg); opacity: 0; }
 }
 
 /* =========================================
@@ -189,7 +235,7 @@ header {
     color: white;
     border-color: var(--accent);
     font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0, 112, 201, 0.3);
+    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
 }
 
 .tag-btn { padding: 6px 14px; font-size: 0.8rem; background: transparent; border: 1px solid #333; }
@@ -305,7 +351,7 @@ footer {
 .footer-bottom { border-top: 1px solid #222; text-align: center; padding-top: 20px; color: #555; font-size: 0.8rem; }
 
 /* =========================================
-   8. MODAL
+   8. MODAL E GALERIA
    ========================================= */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -327,8 +373,32 @@ footer {
     display: flex; align-items: center; justify-content: center;
 }
 .modal-body { display: flex; flex-direction: column; overflow-y: auto; padding-bottom: 90px; }
-.modal-img-container { width: 100%; height: 280px; background: #000; flex-shrink: 0; }
-.modal-img-container img { width: 100%; height: 100%; object-fit: contain; }
+
+/* Configuração nova para a Galeria do Modal */
+.modal-img-container {
+    width: 100%; height: 300px; background: #000; flex-shrink: 0; position: relative;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.modal-slider-track { width: 100%; height: 100%; position: relative; }
+.modal-slide-img {
+    width: 100%; height: 100%; object-fit: contain; position: absolute;
+    top: 0; left: 0; opacity: 0; transition: opacity 0.3s ease; z-index: 1;
+}
+.modal-slide-img.active { opacity: 1; z-index: 2; }
+.modal-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.3); color: white; border: none;
+    width: 35px; height: 35px; border-radius: 50%; font-size: 1rem;
+    cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;
+}
+.modal-arrow.prev { left: 10px; }
+.modal-arrow.next { right: 10px; }
+.photo-counter {
+    position: absolute; bottom: 10px; right: 15px;
+    background: rgba(0,0,0,0.6); color: white; padding: 2px 8px;
+    border-radius: 10px; font-size: 0.7rem; z-index: 10;
+}
+
 .modal-info { padding: 20px 25px; }
 .modal-info h2 { font-size: 1.5rem; line-height: 1.2; margin-bottom: 10px; color: white; }
 .product-desc { color: #ccc; font-size: 0.95rem; line-height: 1.6; margin: 15px 0; white-space: pre-line; }

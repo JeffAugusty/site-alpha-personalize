@@ -14,6 +14,17 @@
 </head>
 <body>
 
+    <div class="hearts-background">
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+    </div>
+
     <header>
         <div class="container header-content">
             <img src="logo.png" alt="Alpha Personalize" class="header-logo-img">
@@ -23,43 +34,20 @@
         </div>
     </header>
 
-    <section class="banner-area container">
-        <div class="banner-slider">
-            
-            <img src="banner1.jpg" alt="Destaque 1" class="banner-slide active">
-            
-            <img src="banner2.jpg" alt="Destaque 2" class="banner-slide">
-
-            <img src="banner3.jpg" alt="Destaque 3" class="banner-slide">
-
-            <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button class="slider-btn next-btn" onclick="changeSlide(1)">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-
-            <div class="slider-dots">
-                <span class="dot active" onclick="goToSlide(0)"></span>
-                <span class="dot" onclick="goToSlide(1)"></span>
-                <span class="dot" onclick="goToSlide(2)"></span>
-            </div>
-            
-        </div>
+    <section class="container" style="margin-top: 15px; margin-bottom: 20px;">
+        <img src="banner-namorados.jpg" alt="Campanha Dia dos Namorados" style="width: 100%; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);">
     </section>
 
     <main class="container">
-        <h2 class="section-title">Catálogo Completo</h2>
         <div id="products-grid" class="grid">
             </div>
     </main>
 
     <footer>
         <div class="container footer-content">
-            
             <div class="footer-col">
                 <img src="logo.png" alt="Alpha Logo" class="footer-logo">
-                <p>Transformando ideias em presentes únicos. Personalização com qualidade e carinho.</p>
+                <p>Personalização com qualidade e carinho para você e sua empresa.</p>
                 <div class="social-links">
                     <a href="https://instagram.com/alpha_personalize" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://facebook.com/alpha_personalize" target="_blank"><i class="fa-brands fa-facebook"></i></a>
@@ -79,11 +67,10 @@
                     <i class="fa-regular fa-credit-card"></i>
                 </div>
             </div>
-
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Alpha Personalize. Todos os direitos reservados.</p>
+            <p>&copy; 2026 Alpha Personalize. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -91,9 +78,18 @@
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
             <div class="modal-body">
+                
                 <div class="modal-img-container">
-                    <img id="modal-img" src="" alt="Produto">
+                    <div id="modal-slider-track" class="modal-slider-track"></div>
+                    <button id="modal-prev" class="modal-arrow prev" onclick="changeModalSlide(-1)">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="modal-next" class="modal-arrow next" onclick="changeModalSlide(1)">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <span id="photo-counter" class="photo-counter"></span>
                 </div>
+                
                 <div class="modal-info">
                     <span id="modal-category" class="category-tag">Categoria</span>
                     <h2 id="modal-title">Nome do Produto</h2>
