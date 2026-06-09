@@ -1,182 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alpha Admin | Painel de Controle</title>
+  <title>Alpha Personalize | Acervo de Artes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <link rel="stylesheet" href="/admin/style.css" />
+  <link rel="stylesheet" href="/acervo-arte/style.css" />
 </head>
 <body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Alpha Personalize">
+      <img src="/logo.png" alt="Alpha Personalize" class="site-logo">
+    </a>
+    <a href="/" class="ghost" style="text-decoration: none; padding: 8px 20px; border-radius: 50px; font-size: 0.9rem;">
+      <i class="fa-solid fa-arrow-left"></i> Voltar ao Site
+    </a>
+  </header>
 
-  <div id="loginOverlay" class="login-overlay">
-    <div class="login-box">
-      <img src="/logo.png" alt="Alpha Personalize" class="login-logo">
-      <h2>Acesso ao Sistema</h2>
-      <p>Área restrita à diretoria Alpha.</p>
-      <input type="email" id="adminEmail" placeholder="E-mail de acesso" />
-      <input type="password" id="adminPass" placeholder="Senha" />
-      <button id="loginBtn" class="btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Entrar no Painel</button>
+  <main>
+    <section class="hero">
+      <h1>Acervo de Artes</h1>
+      <div class="search-shell">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input id="searchInput" type="search" placeholder="Buscar por produto, tema, nome ou código..." autocomplete="off" />
+      </div>
+    </section>
+
+    <section class="filters" aria-label="Filtros">
+      <select id="productFilter"><option value="">Produto</option></select>
+      <select id="themeFilter"><option value="">Tema</option></select>
+      <select id="occasionFilter"><option value="">Ocasião</option></select>
+      <button id="clearFilters" class="ghost" type="button">Limpar</button>
+      <button id="copyFilterLink" class="ghost" type="button"><i class="fa-solid fa-link"></i> Copiar link</button>
+    </section>
+
+    <section class="result-meta">
+      <span id="resultCount"></span>
+    </section>
+
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+
+    <section id="emptyState" class="empty hidden">
+      <i class="fa-solid fa-folder-open" style="font-size: 3rem; color: #333; margin-bottom: 15px; display: block;"></i>
+      Nenhuma arte encontrada com estes filtros.
+    </section>
+  </main>
+
+  <dialog id="artDialog" class="dialog">
+    <button class="dialog-close" id="closeDialog" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+    <div class="dialog-grid">
+      <div class="dialog-image-wrap" id="dialogImageWrap">
+        <img id="dialogImage" alt="" />
+      </div>
+      <div class="dialog-info">
+        <p class="eyebrow" id="dialogCode"></p>
+        <h2 id="dialogTitle"></h2>
+        <div class="info-list">
+          <span id="dialogProduct"></span>
+          <span id="dialogTheme"></span>
+          <span id="dialogOccasion"></span>
+        </div>
+        <button id="copyArtLink" class="primary" type="button"><i class="fa-solid fa-copy"></i> Copiar referência para Pedido</button>
+      </div>
     </div>
-  </div>
-
-  <div id="appLayout" class="app-layout hidden">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <img src="/logo.png" alt="Alpha Personalize">
-      </div>
-      <nav class="sidebar-nav">
-        <button class="nav-item active" data-target="dashboardView"><i class="fa-solid fa-chart-pie"></i> Dashboard</button>
-        <button class="nav-item" data-target="artsView"><i class="fa-solid fa-images"></i> Gerenciar Artes</button>
-        <button class="nav-item" data-target="configView"><i class="fa-solid fa-folder-tree"></i> Categorias & Grupos</button>
-      </nav>
-      <div class="sidebar-footer">
-        <div class="user-info">
-          <i class="fa-solid fa-circle-user"></i>
-          <span>Admin Oficial</span>
-        </div>
-        <button id="logoutBtn" class="btn-logout"><i class="fa-solid fa-power-off"></i> Sair</button>
-      </div>
-    </aside>
-
-    <main class="main-content">
-      <header class="top-header">
-        <h1 id="pageTitle">Visão Geral</h1>
-        <a href="/acervo-arte/" target="_blank" class="btn-ghost"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Acervo Público</a>
-      </header>
-
-      <div class="content-area">
-        <div id="dashboardView" class="view-section active">
-          <div class="metrics-grid">
-            <div class="metric-card">
-              <div class="metric-icon blue"><i class="fa-solid fa-image"></i></div>
-              <div class="metric-data">
-                <span class="metric-label">Total de Artes</span>
-                <h3 id="metricArtsCount">0</h3>
-              </div>
-            </div>
-            
-            <div class="metric-card">
-              <div class="metric-icon green"><i class="fa-solid fa-tags"></i></div>
-              <div class="metric-data">
-                <span class="metric-label">Grupos Ativos</span>
-                <h3 id="metricGroupsCount">0</h3>
-              </div>
-            </div>
-
-            <div class="metric-card">
-              <div class="metric-icon purple"><i class="fa-solid fa-hard-drive"></i></div>
-              <div class="metric-data">
-                <span class="metric-label">Uso do Firebase (5GB Grátis)</span>
-                <h3 id="metricStorageCount">0.00 MB</h3>
-                <div class="storage-bar"><div id="storageFill" class="storage-fill"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="recent-actions">
-            <h2>Adicionadas Recentemente</h2>
-            <div id="recentArtsList" class="recent-list"></div>
-          </div>
-        </div>
-
-        <div id="artsView" class="view-section hidden">
-          <div class="action-bar">
-            <input type="text" id="searchArtAdmin" class="search-input" placeholder="Buscar arte por nome ou código..." />
-            <button id="btnNewArt" class="btn-primary"><i class="fa-solid fa-plus"></i> Nova Arte</button>
-          </div>
-          <div class="table-container">
-            <table class="admin-table">
-              <thead>
-                <tr>
-                  <th>Imagem</th>
-                  <th>Código</th>
-                  <th>Nome da Arte</th>
-                  <th>Produto</th>
-                  <th>Tema / Grupo</th>
-                  <th>Tamanho</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody id="artsTableBody"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <div id="configView" class="view-section hidden">
-          <div class="config-grid">
-            <div class="config-card">
-              <h3>Produtos Disponíveis</h3>
-              <div class="add-group">
-                <input type="text" id="newProductInput" placeholder="Ex: Caneca, Azulejo..." />
-                <button class="btn-primary" onclick="addCategory('products', 'newProductInput')">Adicionar</button>
-              </div>
-              <ul id="productsList" class="group-list"></ul>
-            </div>
-            <div class="config-card">
-              <h3>Temas e Grupos</h3>
-              <div class="add-group">
-                <input type="text" id="newThemeInput" placeholder="Ex: Avós, Namorados..." />
-                <button class="btn-primary" onclick="addCategory('themes', 'newThemeInput')">Adicionar</button>
-              </div>
-              <ul id="themesList" class="group-list"></ul>
-            </div>
-            <div class="config-card">
-              <h3>Ocasiões Especiais</h3>
-              <div class="add-group">
-                <input type="text" id="newOccasionInput" placeholder="Ex: Dia das Mães..." />
-                <button class="btn-primary" onclick="addCategory('occasions', 'newOccasionInput')">Adicionar</button>
-              </div>
-              <ul id="occasionsList" class="group-list"></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <dialog id="artModal" class="admin-dialog">
-    <div class="dialog-header">
-      <h2 id="modalArtTitle">Cadastrar Arte</h2>
-      <button class="btn-close-dialog" id="closeArtModal"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <form id="artForm" class="dialog-form">
-      <input type="hidden" id="editId" />
-      <div class="form-grid">
-        <div class="form-col-upload">
-          <div class="upload-area" id="uploadArea">
-            <i class="fa-solid fa-cloud-arrow-up"></i>
-            <span>Selecione a Imagem</span>
-            <input type="file" id="imageInput" accept="image/*" />
-            <img id="imagePreview" class="hidden" />
-          </div>
-        </div>
-        <div class="form-col-fields">
-          <div class="form-row">
-            <label>Nome <input type="text" id="titleInput" required placeholder="Ex: Caneca Vó" /></label>
-            <label>Código <input type="text" id="codeInput" required placeholder="Ex: CAN-001" /></label>
-          </div>
-          <div class="form-row">
-            <label>Produto <select id="productSelect" required><option value="">Selecione...</option></select></label>
-            <label>Tema/Grupo <select id="themeSelect" required><option value="">Selecione...</option></select></label>
-          </div>
-          <div class="form-row">
-            <label>Ocasião <select id="occasionSelect"><option value="">Selecione... (Opcional)</option></select></label>
-            <label>Estilo Visual <input type="text" id="styleInput" placeholder="Ex: Minimalista" /></label>
-          </div>
-          <label>Tags (Busca) <input type="text" id="tagsInput" placeholder="Separadas por vírgula" /></label>
-        </div>
-      </div>
-      <div class="dialog-footer">
-        <button type="button" class="btn-ghost" id="cancelArtBtn">Cancelar</button>
-        <button type="submit" class="btn-primary" id="saveArtBtn">Salvar Arte</button>
-      </div>
-    </form>
   </dialog>
 
-  <div id="toast" class="toast hidden"><i class="fa-solid fa-check"></i> <span id="toastMsg">Salvo!</span></div>
-
-  <script type="module" src="/admin/app.js"></script>
+  <div id="toast" class="toast hidden"><i class="fa-solid fa-check"></i> <span id="toastMsg">Copiado!</span></div>
+  
+  <script type="module" src="/acervo-arte/app.js"></script>
 </body>
 </html>
