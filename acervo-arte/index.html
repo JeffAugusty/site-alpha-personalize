@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alpha Personalize | Acervo de Artes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html" aria-label="Alpha Personalize">
+      <img src="../logo.png" alt="Alpha Personalize" class="site-logo">
+    </a>
+    <a href="../index.html" class="ghost" style="text-decoration: none; padding: 8px 20px; border-radius: 50px; font-size: 0.9rem;">
+      <i class="fa-solid fa-arrow-left"></i> Voltar ao Site
+    </a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Acervo de Artes</h1>
+      <div class="search-shell">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input id="searchInput" type="search" placeholder="Buscar por produto, tema, nome ou código..." autocomplete="off" />
+      </div>
+    </section>
+
+    <section class="filters" aria-label="Filtros">
+      <select id="productFilter"><option value="">Produto</option></select>
+      <select id="themeFilter"><option value="">Tema</option></select>
+      <select id="occasionFilter"><option value="">Ocasião</option></select>
+      <button id="clearFilters" class="ghost" type="button">Limpar</button>
+      <button id="copyFilterLink" class="ghost" type="button"><i class="fa-solid fa-link"></i> Copiar link</button>
+    </section>
+
+    <section class="result-meta">
+      <span id="resultCount"></span>
+    </section>
+
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+
+    <section id="emptyState" class="empty hidden">
+      <i class="fa-solid fa-folder-open" style="font-size: 3rem; color: #333; margin-bottom: 15px; display: block;"></i>
+      Nenhuma arte encontrada com estes filtros.
+    </section>
+  </main>
+
+  <dialog id="artDialog" class="dialog">
+    <button class="dialog-close" id="closeDialog" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+    <div class="dialog-grid">
+      <div class="dialog-image-wrap" id="dialogImageWrap">
+        <img id="dialogImage" alt="" />
+      </div>
+      <div class="dialog-info">
+        <p class="eyebrow" id="dialogCode"></p>
+        <h2 id="dialogTitle"></h2>
+        <div class="info-list">
+          <span id="dialogProduct"></span>
+          <span id="dialogTheme"></span>
+          <span id="dialogOccasion"></span>
+        </div>
+        <button id="copyArtLink" class="primary" type="button"><i class="fa-solid fa-copy"></i> Copiar referência para Pedido</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast hidden"><i class="fa-solid fa-check"></i> <span id="toastMsg">Copiado!</span></div>
+  
+  <script type="module" src="app.js"></script>
+</body>
+</html>

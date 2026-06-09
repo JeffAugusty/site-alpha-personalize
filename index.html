@@ -1,109 +1,143 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Catálogo | Alpha Personalize</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Alpha Personalize - Catálogo exclusivo de produtos personalizados.">
+    <meta name="theme-color" content="#00A6E6">
+    <title>Alpha Personalize | Catálogo Premium</title>
     
     <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-to-main">Ir para conteúdo principal</a>
 
-    <div class="hearts-background">
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-    </div>
+    <div id="sidebar-overlay" class="sidebar-overlay" role="presentation"></div>
+    <aside id="sidebar-menu" class="sidebar-menu" role="navigation">
+        <div class="sidebar-header">
+            <h2>Categorias</h2>
+            <button id="btn-close-sidebar" class="close-sidebar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav class="sidebar-links" id="sidebar-categories"></nav>
+    </aside>
 
-    <header>
+    <header class="main-header" role="banner">
         <div class="container header-content">
-            <img src="logo.png" alt="Alpha Personalize" class="header-logo-img">
-            <a href="https://wa.me/5534991405711" target="_blank" class="whatsapp-btn-header">
-                <i class="fa-brands fa-whatsapp"></i> <span>Atendimento</span>
-            </a>
+            <div class="logo-area">
+                <button id="btn-menu-toggle" class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+                <a href="#" class="logo-link"><img src="logo.png" alt="Alpha Personalize" class="logo-img"></a>
+            </div>
+            
+            <div class="header-actions">
+                <a href="./acervo-arte/index.html" class="act-wp" style="background-color: #00A6E6; margin-right: 4px;" title="Ver Acervo de Artes">
+                    <i class="fa-solid fa-palette"></i> <span class="action-text">Acervo</span>
+                </a>
+                
+                <a href="https://shopee.com.br/shop/387733032" target="_blank" rel="noopener noreferrer" class="act-sh" title="Compre na nossa Shopee">
+                    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="font-size: 1.2rem;">
+                        <path d="M8 8V6a4 4 0 0 1 8 0v2h3a1 1 0 0 1 1 1.1l-1.5 11A2 2 0 0 1 16.5 21h-9a2 2 0 0 1-2-1.9l-1.5-11A1 1 0 0 1 5 7h3zm2 0h4V6a2 2 0 0 0-4 0v2zm-2.4 4c0-1.2 1-1.8 2.3-1.8h2.3v1.5H9.9c-.4 0-.8.1-.8.4 0 .3.4.5.9.6l1.1.3c1.5.3 2.4.9 2.4 2.3 0 1.3-1.1 1.9-2.5 1.9H8.5v-1.5h2.5c.5 0 .9-.1.9-.5 0-.3-.4-.5-.9-.6l-1.1-.3c-1.5-.3-2.5-1-2.5-2.3z"/>
+                    </svg>
+                    <span class="action-text">Shopee</span>
+                </a>
+                
+                <a href="https://wa.me/5534991405711" target="_blank" rel="noopener noreferrer" class="act-wp" title="Fale conosco via WhatsApp"><i class="fa-brands fa-whatsapp"></i> <span class="action-text">WhatsApp</span></a>
+            </div>
         </div>
     </header>
 
-    <section class="container" style="margin-top: 15px; margin-bottom: 20px;">
-        <img src="banner-namorados.jpg" alt="Campanha Dia dos Namorados" style="width: 100%; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);">
+    <section class="hero-parallax" role="region">
+        <div class="glow-effect" aria-hidden="true"></div>
+        <h1 class="watermark" aria-hidden="true">ALPHA</h1>
+        <div class="hero-text">
+            <div class="trust-badge-hero"><i class="fa-solid fa-shield-check"></i> Loja Oficial Verificada</div>
+            <h2>O Presente <br><span class="text-gradient">Inesquecível.</span></h2>
+            <p>Descubra inspirações exclusivas criadas para surpreender quem você ama.</p>
+            
+            <a href="./acervo-arte/index.html" class="btn-hero-acervo">
+                <i class="fa-solid fa-palette" style="margin-right: 8px;"></i> Conheça nosso Acervo de Artes
+            </a>
+
+            <div class="scroll-indicator" aria-hidden="true">
+                <span>Role para ver o catálogo</span>
+                <div class="line"><div class="dot"></div></div>
+            </div>
+        </div>
     </section>
 
-    <main class="container">
-        <div id="products-grid" class="grid">
+    <main class="catalog-section" id="main-content" role="main">
+        <div class="container">
+            <header class="catalog-header">
+                <h2>Coleções</h2>
+                <p style="color: #00A6E6; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Explore as nossas opções exclusivas ✨</p>
+            </header>
+            <nav class="categories-bar desktop-only" id="categories-container"></nav>
+            <div id="search-feedback" class="search-feedback"></div>
+            <div id="products-grid" class="app-grid"></div>
+            <div id="loading-indicator" class="loading-indicator" aria-hidden="true">
+                <div class="spinner"></div><p>Carregando produtos...</p>
             </div>
+        </div>
     </main>
 
-    <footer>
+    <footer class="main-footer" role="contentinfo">
         <div class="container footer-content">
-            <div class="footer-col">
-                <img src="logo.png" alt="Alpha Logo" class="footer-logo">
-                <p>Personalização com qualidade e carinho para você e sua empresa.</p>
+            <div class="footer-brand">
+                <img src="logo.png" alt="Alpha Personalize" class="footer-logo">
+                <p class="footer-slogan">Personalização com qualidade e carinho para você e sua empresa.</p>
                 <div class="social-links">
-                    <a href="https://instagram.com/alpha_personalize" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://facebook.com/alpha_personalize" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://tiktok.com/@alpha.personalize" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://instagram.com/alpha_personalize" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com/alpha_personalize" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://tiktok.com/@alpha.personalize" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
-
-            <div class="footer-col">
-                <h4>Compra Segura</h4>
-                <div class="security-badges">
-                    <div class="badge"><i class="fa-solid fa-lock"></i> Site Seguro (SSL)</div>
-                    <div class="badge"><i class="fa-solid fa-shield-halved"></i> Dados Protegidos</div>
+            <div class="footer-info">
+                <div class="footer-column">
+                    <h4>Compra Segura</h4>
+                    <ul class="security-list">
+                        <li><i class="fa-solid fa-lock" style="color: #25D366;"></i> Site Seguro (SSL)</li>
+                        <li><i class="fa-solid fa-shield-halved" style="color: #25D366;"></i> Dados Protegidos</li>
+                    </ul>
                 </div>
-                <h4>Pagamento Facilitado</h4>
-                <div class="payment-icons">
-                    <i class="fa-brands fa-pix"></i>
-                    <i class="fa-regular fa-credit-card"></i>
+                <div class="footer-column">
+                    <h4>Pagamento Facilitado</h4>
+                    <div class="payment-icons">
+                        <i class="fa-brands fa-pix"></i>
+                        <i class="fa-regular fa-credit-card"></i>
+                    </div>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>&copy; 2026 Alpha Personalize. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <div id="product-modal" class="modal-overlay">
+    <div id="product-modal" class="modal-overlay" role="dialog" aria-hidden="true">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <button id="btn-close-modal" class="close-modal"><i class="fa-solid fa-xmark"></i></button>
             <div class="modal-body">
-                
                 <div class="modal-img-container">
                     <div id="modal-slider-track" class="modal-slider-track"></div>
-                    <button id="modal-prev" class="modal-arrow prev" onclick="changeModalSlide(-1)">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button id="modal-next" class="modal-arrow next" onclick="changeModalSlide(1)">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
+                    <button id="modal-prev" class="modal-arrow prev"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button id="modal-next" class="modal-arrow next"><i class="fa-solid fa-chevron-right"></i></button>
                     <span id="photo-counter" class="photo-counter"></span>
                 </div>
-                
                 <div class="modal-info">
-                    <span id="modal-category" class="category-tag">Categoria</span>
-                    <h2 id="modal-title">Nome do Produto</h2>
+                    <span id="modal-category" class="category-tag"></span>
+                    <h2 id="modal-title"></h2>
                     <div id="modal-price-area" class="price-area"></div>
-                    <p id="modal-desc" class="product-desc">Descrição...</p>
+                    <p id="modal-desc" class="product-desc"></p>
                     <div id="options-container" class="options-area"></div>
-                    <button id="modal-whatsapp-btn" class="btn-buy modal-footer-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Enviar Pedido
+                    <button id="modal-whatsapp-btn" class="btn-buy modal-footer-btn" style="background-color: #00A6E6;">
+                        <i class="fa-brands fa-whatsapp"></i> Personalizar via WhatsApp
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="app.js"></script>
+    
+    <script src="app.js" defer></script>
 </body>
 </html>
